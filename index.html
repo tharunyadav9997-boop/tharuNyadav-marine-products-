@@ -1,0 +1,1017 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ocean Life | Marine Products CSP</title>
+
+<style>
+:root {
+    --navy: #082f49;
+    --blue: #0284c7;
+    --cyan: #22d3ee;
+    --white: #ffffff;
+    --text: #334155;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f8fafc;
+    color: var(--text);
+    line-height: 1.7;
+}
+
+header {
+    background: var(--navy);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 15px #0002;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+    color: var(--cyan);
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+}
+
+.nav-links button {
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 8px;
+}
+
+.nav-links button:hover,
+.nav-links button.active {
+    color: var(--cyan);
+}
+
+.menu-toggle {
+    display: none;
+    color: white;
+    border: none;
+    background: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.page {
+    display: none;
+    min-height: 75vh;
+    animation: appear .4s ease;
+}
+
+.page.active { display: block; }
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero {
+    min-height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 70px 20px;
+    color: white;
+    background:
+    linear-gradient(120deg, #082f49dd, #0284c7bb),
+    url("https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1600")
+    center/cover;
+}
+
+.hero-content { max-width: 850px; }
+
+.hero h1 {
+    font-size: clamp(35px, 6vw, 60px);
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.primary-btn {
+    display: inline-block;
+    background: var(--cyan);
+    color: var(--navy);
+    border: none;
+    padding: 13px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.primary-btn:hover {
+    background: white;
+    transform: translateY(-2px);
+}
+
+.container {
+    max-width: 1150px;
+    margin: auto;
+    padding: 60px 22px;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-heading h2 {
+    font-size: 34px;
+    color: var(--navy);
+}
+
+.section-heading p { color: #64748b; }
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 22px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px #0f172a12;
+    border-bottom: 4px solid var(--blue);
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px #0f172a20;
+}
+
+.card h3 {
+    color: var(--navy);
+    margin-bottom: 10px;
+}
+
+.card-icon {
+    font-size: 35px;
+    margin-bottom: 12px;
+}
+
+.intro-banner {
+    background: var(--navy);
+    color: white;
+    padding: 35px;
+    border-radius: 18px;
+    margin-top: 35px;
+}
+
+.intro-banner h2 {
+    color: var(--cyan);
+    margin-bottom: 12px;
+}
+
+.split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: center;
+}
+
+.project-photos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.project-photos img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px #0002;
+    transition: .3s;
+}
+
+.project-photos img:hover { transform: scale(1.03); }
+
+.info-list { padding-left: 22px; }
+.info-list li { margin: 10px 0; }
+
+.week-list {
+    display: grid;
+    gap: 25px;
+}
+
+.week-card {
+    display: grid;
+    grid-template-columns: 75px 1fr;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px #00000010;
+    border-left: 5px solid var(--blue);
+    transition: .3s;
+}
+
+.week-card:hover { box-shadow: 0 8px 22px #0002; }
+
+.week-number {
+    font-size: 27px;
+    color: var(--blue);
+    font-weight: bold;
+}
+
+.week-card h3 {
+    color: var(--navy);
+    margin-bottom: 8px;
+}
+
+.week-card h4 {
+    color: var(--blue);
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.week-card ul {
+    padding-left: 22px;
+    margin-top: 8px;
+}
+
+.week-card li { margin: 5px 0; }
+
+.week-photos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.week-photos img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px #0002;
+    transition: transform .3s ease;
+}
+
+.week-photos img:hover { transform: scale(1.03); }
+
+.team-card {
+    text-align: center;
+    overflow: hidden;
+    padding: 0;
+}
+
+.team-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.team-details { padding: 18px; }
+
+.team-details p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+footer {
+    background: var(--navy);
+    color: white;
+    text-align: center;
+    padding: 28px 15px;
+}
+
+footer p { color: #cbd5e1; }
+
+#image-viewer {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    background: #000e;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+
+#image-viewer img {
+    max-width: 95%;
+    max-height: 85vh;
+    border-radius: 12px;
+}
+
+#image-viewer button {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    background: none;
+    color: white;
+    border: none;
+    font-size: 38px;
+    cursor: pointer;
+}
+
+@media(max-width: 800px) {
+    .menu-toggle { display: block; }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background: var(--navy);
+        flex-direction: column;
+        gap: 0;
+        padding: 15px;
+    }
+
+    .nav-links.show { display: flex; }
+
+    .nav-links button {
+        width: 100%;
+        text-align: left;
+        padding: 12px;
+    }
+
+    .split { grid-template-columns: 1fr; }
+    .hero { min-height: 400px; }
+}
+
+@media(max-width: 600px) {
+    .week-card {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .week-photos,
+    .project-photos {
+        grid-template-columns: 1fr;
+    }
+
+    .week-photos img { height: 220px; }
+    .project-photos img { height: 230px; }
+    .section-heading h2 { font-size: 28px; }
+    .hero h1 { font-size: 36px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav class="navbar">
+    <div class="logo">🌊 OCEAN LIFE</div>
+
+    <button class="menu-toggle"
+    onclick="toggleMenu()"
+    aria-label="Toggle navigation">☰</button>
+
+    <ul class="nav-links" id="navigation">
+        <li><button class="active" onclick="navigate('home',this)">Home</button></li>
+        <li><button onclick="navigate('project',this)">Project</button></li>
+        <li><button onclick="navigate('activities',this)">Activities</button></li>
+        <li><button onclick="navigate('methods',this)">Methods</button></li>
+        <li><button onclick="navigate('team',this)">Our Team</button></li>
+    </ul>
+</nav>
+</header>
+
+<main>
+
+<!-- HOME PAGE -->
+<section class="page active" id="home">
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Discover the World of Marine Products</h1>
+            <p>
+                Exploring aquatic resources, aqua farming,
+                sustainable production and the importance
+                of marine products in our society.
+            </p>
+            <button class="primary-btn" onclick="navigate('project')">
+                Explore Our Project →
+            </button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section-heading">
+            <h2>Welcome to Our Marine Products</h2>
+            <p>Our Community Service Project</p>
+        </div>
+
+        <div class="cards">
+            <article class="card">
+                <div class="card-icon">🐟</div>
+                <h3>Marine Products</h3>
+                <p>Learn about fish, prawns, crabs and other aquatic resources.</p>
+            </article>
+
+            <article class="card">
+                <div class="card-icon">🌱</div>
+                <h3>Aqua Farming</h3>
+                <p>Understand the cultivation of aquatic organisms.</p>
+            </article>
+
+            <article class="card">
+                <div class="card-icon">🧊</div>
+                <h3>Food Processing</h3>
+                <p>Explore preservation and processing techniques.</p>
+            </article>
+
+            <article class="card">
+                <div class="card-icon">♻️</div>
+                <h3>Sustainability</h3>
+                <p>Discover responsible practices for aquatic resources.</p>
+            </article>
+        </div>
+
+        <div class="intro-banner">
+            <h2>Our Project Vision</h2>
+            <p>
+                To understand the marine products industry,
+                study aqua farming practices and encourage
+                sustainable utilization of aquatic resources.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECT PAGE -->
+<section class="page" id="project">
+    <div class="container">
+        <div class="section-heading">
+            <h2>About Our Project</h2>
+            <p>Marine Products and Community Development</p>
+        </div>
+
+        <div class="split">
+            <div>
+                <h2 style="color:#082f49;margin-bottom:15px">Project Overview</h2>
+                <p>
+                    This Community Service Project focuses on
+                    understanding marine products, their availability,
+                    processing techniques and their economic
+                    importance to coastal communities.
+                </p>
+
+                <br>
+                <h3>Project Objectives</h3>
+                <ul class="info-list">
+                    <li>Identify different marine resources.</li>
+                    <li>Study aquaculture and fish farming.</li>
+                    <li>Understand pond maintenance.</li>
+                    <li>Learn fish disease identification.</li>
+                    <li>Explore processing and preservation.</li>
+                    <li>Promote sustainable aquaculture.</li>
+                </ul>
+            </div>
+
+            <div class="project-photos">
+                <img src="images/project-photo1.jpg"
+                alt="Marine Products Project Photo 1"
+                onclick="previewImage(this.src)">
+
+                <img src="images/project-photo2.jpg"
+                alt="Marine Products Project Photo 2"
+                onclick="previewImage(this.src)">
+            </div>
+        </div>
+
+        <div class="intro-banner">
+            <h2>Mini Project</h2>
+            <p>
+                Sustainable Aquaculture Practices for Marine Products,
+                including approaches such as Recirculating Aquaculture
+                Systems (RAS) and Integrated Multi-Trophic Aquaculture
+                (IMTA).
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ACTIVITIES PAGE -->
+<section class="page" id="activities">
+<div class="container">
+
+<div class="section-heading">
+    <h2>Our Weekly Activities</h2>
+    <p>Six weeks of learning and practical observations</p>
+</div>
+
+<div class="week-list">
+
+<!-- WEEK 1 -->
+<article class="week-card">
+<div class="week-number">01</div>
+<div>
+<h3>Week 1: Introduction to Aqua Farming</h3>
+
+<p>
+During the first week, we learned about the basic concepts
+of aquaculture and its importance in the production of
+fish, prawns and other aquatic organisms. We studied how
+aquatic organisms are cultivated in controlled water
+environments for food production and commercial purposes.
+</p>
+
+<h4>Topics Covered:</h4>
+<ul>
+<li>Introduction to aquaculture and its meaning.</li>
+<li>Difference between freshwater and marine aquaculture.</li>
+<li>Types of fish farming systems and their importance.</li>
+<li>Commonly cultured species such as Rohu, Catla, Mrigal,
+Tilapia, shrimp and freshwater prawns.</li>
+<li>Importance of aquaculture in food security and employment.</li>
+<li>Basic requirements for starting a fish farming unit.</li>
+</ul>
+
+<h4>Practical Learning:</h4>
+<p>
+We observed different types of fish farming systems and
+learned about fish seed, fingerlings, water availability
+and suitable farming conditions. We also understood how
+aquaculture supports rural livelihoods and the local economy.
+</p>
+
+<h4>Learning Outcome:</h4>
+<p>
+We gained basic knowledge about aqua farming, its types,
+cultured species and its role in meeting the increasing
+demand for fish and other aquatic products.
+</p>
+
+<div class="week-photos">
+<img src="images/week1-photo1.jpg" alt="Week 1 Aqua Farming Photo 1" onclick="previewImage(this.src)">
+<img src="images/week1-photo2.jpg" alt="Week 1 Aqua Farming Photo 2" onclick="previewImage(this.src)">
+</div>
+</div>
+</article>
+
+<!-- WEEK 2 -->
+<article class="week-card">
+<div class="week-number">02</div>
+<div>
+<h3>Week 2: Pond Structure and Maintenance</h3>
+
+<p>
+During the second week, we studied the construction,
+structure and maintenance of fish ponds. We understood
+that proper pond preparation and water management are
+essential for healthy fish growth and successful fish
+production.
+</p>
+
+<h4>Topics Covered:</h4>
+<ul>
+<li>Different types of fish ponds used in aquaculture.</li>
+<li>Selection of suitable land for pond construction.</li>
+<li>Importance of pond depth, shape and water capacity.</li>
+<li>Construction of pond bunds, inlets and outlets.</li>
+<li>Removal of unwanted weeds and harmful organisms.</li>
+<li>Importance of pond drying and preparation before stocking.</li>
+<li>Water quality parameters such as temperature, pH and dissolved oxygen.</li>
+</ul>
+
+<h4>Practical Learning:</h4>
+<p>
+We observed pond structures and learned about water
+inlet and outlet systems. We also studied the importance
+of maintaining clean water, removing unwanted materials
+and checking pond conditions regularly.
+</p>
+
+<h4>Learning Outcome:</h4>
+<p>
+We understood how proper pond construction, preparation
+and regular maintenance improve the aquatic environment
+and help maintain healthy fish populations.
+</p>
+
+<div class="week-photos">
+<img src="images/week2-photo1.jpg" alt="Week 2 Pond Photo 1" onclick="previewImage(this.src)">
+<img src="images/week2-photo2.jpg" alt="Week 2 Pond Photo 2" onclick="previewImage(this.src)">
+</div>
+</div>
+</article>
+
+<!-- WEEK 3 -->
+<article class="week-card">
+<div class="week-number">03</div>
+<div>
+<h3>Week 3: Diseases, Feeds and Chemicals</h3>
+
+<p>
+During the third week, we learned about common fish
+diseases, nutritional requirements and different types
+of aqua feeds. We understood that proper nutrition and
+good water quality play important roles in maintaining
+fish health and growth.
+</p>
+
+<h4>Topics Covered:</h4>
+<ul>
+<li>Introduction to common fish diseases.</li>
+<li>Causes of bacterial, fungal and parasitic infections.</li>
+<li>Symptoms of unhealthy fish and unusual swimming behaviour.</li>
+<li>Importance of protein, carbohydrates, fats, vitamins and minerals.</li>
+<li>Different types of fish feed such as floating and sinking feed.</li>
+<li>Ingredients used in fish feed, including fishmeal and soybean meal.</li>
+<li>Importance of proper feed storage and quality.</li>
+<li>Role of approved water-quality management products in aquaculture.</li>
+</ul>
+
+<h4>Practical Learning:</h4>
+<p>
+We observed different fish feed materials and learned
+about their nutritional importance. We also discussed
+how feed quality, feeding habits and water conditions
+can influence fish health and production.
+</p>
+
+<h4>Learning Outcome:</h4>
+<p>
+We gained knowledge about fish nutrition, feed ingredients,
+common diseases and the importance of responsible feed
+management in aquaculture.
+</p>
+
+<div class="week-photos">
+<img src="images/week3-photo1.jpg" alt="Week 3 Fish Feed Photo 1" onclick="previewImage(this.src)">
+<img src="images/week3-photo2.jpg" alt="Week 3 Fish Feed Photo 2" onclick="previewImage(this.src)">
+</div>
+</div>
+</article>
+
+<!-- WEEK 4 -->
+<article class="week-card">
+<div class="week-number">04</div>
+<div>
+<h3>Week 4: Identifying Fish Diseases</h3>
+
+<p>
+During the fourth week, we focused on identifying fish
+health problems by observing external symptoms and
+changes in fish behaviour. We learned that early
+identification of diseases helps prevent their spread
+and supports better fish health management.
+</p>
+
+<h4>Topics Covered:</h4>
+<ul>
+<li>Observation of physical changes in fish.</li>
+<li>Identification of abnormal swimming and feeding behaviour.</li>
+<li>Common external signs such as skin lesions and damaged fins.</li>
+<li>Fungal infections and their visible characteristics.</li>
+<li>Parasitic infections affecting fish health.</li>
+<li>Eye abnormalities and changes in body appearance.</li>
+<li>Swim bladder disorders and difficulties in maintaining balance.</li>
+<li>Importance of regular fish health monitoring.</li>
+</ul>
+
+<h4>Practical Learning:</h4>
+<p>
+We observed fish health conditions and discussed how
+changes in body colour, movement, feeding response and
+physical appearance can indicate possible health problems.
+We also learned the importance of consulting fisheries
+experts for accurate disease diagnosis.
+</p>
+
+<h4>Learning Outcome:</h4>
+<p>
+We developed an understanding of fish health observation,
+common disease symptoms and the importance of early
+detection and professional guidance.
+</p>
+
+<div class="week-photos">
+<img src="images/week4-photo1.jpg" alt="Week 4 Fish Health Photo 1" onclick="previewImage(this.src)">
+<img src="images/week4-photo2.jpg" alt="Week 4 Fish Health Photo 2" onclick="previewImage(this.src)">
+</div>
+</div>
+</article>
+
+<!-- WEEK 5 -->
+<article class="week-card">
+<div class="week-number">05</div>
+<div>
+<h3>Week 5: Implementing Treatments and Water Management</h3>
+
+<p>
+During the fifth week, we learned about fish pond
+management practices and the importance of maintaining
+a healthy aquatic environment. We studied different
+methods used to manage water quality, reduce pollution
+and prevent the spread of fish diseases.
+</p>
+
+<h4>Topics Covered:</h4>
+<ul>
+<li>Importance of maintaining clean pond water.</li>
+<li>Removal of excess organic waste and unwanted materials.</li>
+<li>Monitoring dissolved oxygen, pH and water temperature.</li>
+<li>Importance of proper aeration and water circulation.</li>
+<li>Prevention of disease transmission between fish.</li>
+<li>Basic biosecurity practices in fish farms.</li>
+<li>Importance of using approved treatments under expert guidance.</li>
+<li>Safe handling and storage of aquaculture inputs.</li>
+</ul>
+
+<h4>Practical Learning:</h4>
+<p>
+We observed pond cleaning and water management methods.
+We discussed how farmers monitor water quality and
+maintain suitable environmental conditions. We also
+learned that treatment decisions should be based on
+proper diagnosis and advice from qualified fisheries
+professionals.
+</p>
+
+<h4>Learning Outcome:</h4>
+<p>
+We understood the importance of pond hygiene, water
+quality management, disease prevention and responsible
+aquaculture practices.
+</p>
+
+<div class="week-photos">
+<img src="images/week5-photo1.jpg" alt="Week 5 Treatment Photo 1" onclick="previewImage(this.src)">
+<img src="images/week5-photo2.jpg" alt="Week 5 Treatment Photo 2" onclick="previewImage(this.src)">
+</div>
+</div>
+</article>
+
+<!-- WEEK 6 -->
+<article class="week-card">
+<div class="week-number">06</div>
+<div>
+<h3>Week 6: Growth, Feeding and Harvesting</h3>
+
+<p>
+During the sixth week, we studied fish growth, feeding
+management and harvesting techniques. We learned how
+farmers monitor fish development and maintain proper
+feeding schedules to achieve healthy growth and good
+production results.
+</p>
+
+<h4>Topics Covered:</h4>
+<ul>
+<li>Different stages of fish growth from fry to adult fish.</li>
+<li>Importance of selecting healthy fish seed and fingerlings.</li>
+<li>Regular monitoring of fish size and body weight.</li>
+<li>Importance of balanced feed for fish growth.</li>
+<li>Feeding schedules and proper feed management.</li>
+<li>Different harvesting methods used in aquaculture.</li>
+<li>Handling and transportation of harvested fish.</li>
+<li>Introduction to freshwater prawn farming and its economic importance.</li>
+<li>Post-harvest handling, icing and storage of fish.</li>
+</ul>
+
+<h4>Practical Learning:</h4>
+<p>
+We learned about fish growth monitoring and different
+harvesting methods. We also studied freshwater prawn
+farming and the importance of maintaining product
+quality after harvesting. Proper handling and cooling
+help preserve freshness during transportation and storage.
+</p>
+
+<h4>Learning Outcome:</h4>
+<p>
+We gained knowledge about fish growth, feeding practices,
+harvesting procedures and post-harvest management.
+We also understood how aquaculture contributes to food
+production, employment and economic development.
+</p>
+
+<div class="week-photos">
+<img src="images/week6-photo1.jpg" alt="Week 6 Harvesting Photo 1" onclick="previewImage(this.src)">
+<img src="images/week6-photo2.jpg" alt="Week 6 Harvesting Photo 2" onclick="previewImage(this.src)">
+</div>
+</div>
+</article>
+
+</div>
+
+<div class="intro-banner">
+<h2>Overall Weekly Project Outcome</h2>
+<p>
+Through these six weeks of activities, we gained knowledge
+about aqua farming, pond construction, fish nutrition,
+disease identification, water management, harvesting and
+marine product preservation. These activities helped us
+understand the importance of sustainable aquaculture,
+community awareness and the economic value of aquatic
+resources.
+</p>
+</div>
+
+</div>
+</section>
+
+<!-- METHODS PAGE -->
+<section class="page" id="methods">
+<div class="container">
+<div class="section-heading">
+<h2>Marine Product Processing</h2>
+<p>Methods used to preserve aquatic products</p>
+</div>
+
+<div class="cards">
+<article class="card">
+<div class="card-icon">☀️</div>
+<h3>Sun Drying</h3>
+<p>Removing moisture from marine products through exposure to sunlight.</p>
+</article>
+
+<article class="card">
+<div class="card-icon">🧂</div>
+<h3>Salting</h3>
+<p>Using salt to draw out moisture and help preserve food.</p>
+</article>
+
+<article class="card">
+<div class="card-icon">❄️</div>
+<h3>Freezing</h3>
+<p>Lowering the temperature to preserve products and maintain quality.</p>
+</article>
+
+<article class="card">
+<div class="card-icon">🥫</div>
+<h3>Canning</h3>
+<p>Packing products in sealed containers using appropriate preservation methods.</p>
+</article>
+</div>
+
+<div class="intro-banner">
+<h2>Why is Processing Important?</h2>
+<p>
+Proper processing helps extend shelf life, maintain food
+quality, reduce waste and support food availability.
+</p>
+</div>
+</div>
+</section>
+
+<!-- TEAM PAGE -->
+<section class="page" id="team">
+<div class="container">
+<div class="section-heading">
+<h2>Meet Our Team</h2>
+<p>Students behind the Community Service Project</p>
+</div>
+
+<div class="cards">
+
+<article class="card team-card">
+<img src="images/team1.jpg" alt="Challa Tharun Yadav">
+<div class="team-details">
+<h3>Challa Tharun Yadav</h3>
+<p>Project Leader</p>
+</div>
+</article>
+
+<article class="card team-card">
+<img src="images/team2.jpg" alt="B. Chennakesava Reddy">
+<div class="team-details">
+<h3>B. Chennakesava Reddy</h3>
+<p>Data Analyst</p>
+</div>
+</article>
+
+<article class="card team-card">
+<img src="images/team3.jpg" alt="Ch. Venkatesh">
+<div class="team-details">
+<h3>Ch. Venkatesh</h3>
+<p>Researcher</p>
+</div>
+</article>
+
+<article class="card team-card">
+<img src="images/team4.jpg" alt="B. Tharun">
+<div class="team-details">
+<h3>B. Tharun</h3>
+<p>Field Reporter</p>
+</div>
+</article>
+
+</div>
+</div>
+</section>
+
+</main>
+
+<footer>
+<h3>🌊 OCEAN LIFE</h3>
+<p>Marine Products Community Service Project</p>
+<p>© 2026 Ocean Life | All Rights Reserved</p>
+</footer>
+
+<!-- IMAGE PREVIEW -->
+<div id="image-viewer" onclick="closePreview()">
+<button onclick="closePreview()" aria-label="Close preview">×</button>
+<img id="preview-picture" src="" alt="Image preview"
+onclick="event.stopPropagation()">
+</div>
+
+<script>
+function navigate(pageId, clickedButton) {
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+    });
+
+    const selectedPage = document.getElementById(pageId);
+
+    if (selectedPage) {
+        selectedPage.classList.add("active");
+    }
+
+    document.querySelectorAll(".nav-links button").forEach(button => {
+        button.classList.remove("active");
+    });
+
+    if (clickedButton) {
+        clickedButton.classList.add("active");
+    } else {
+        const matchingButton = [
+            ...document.querySelectorAll(".nav-links button")
+        ].find(button =>
+            button.getAttribute("onclick").includes("'" + pageId + "'")
+        );
+
+        if (matchingButton) {
+            matchingButton.classList.add("active");
+        }
+    }
+
+    document.getElementById("navigation").classList.remove("show");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+function toggleMenu() {
+    document.getElementById("navigation").classList.toggle("show");
+}
+
+function previewImage(imageSource) {
+    document.getElementById("preview-picture").src = imageSource;
+    document.getElementById("image-viewer").style.display = "flex";
+    document.body.style.overflow = "hidden";
+}
+
+function closePreview() {
+    document.getElementById("image-viewer").style.display = "none";
+    document.body.style.overflow = "auto";
+}
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+        closePreview();
+    }
+});
+</script>
+
+</body>
+</html>
